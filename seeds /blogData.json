@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "title": "top ",
+    "content": "Music Near Me is what i wanna here",
+    "user_id":1
+  },
+  {
+    "id": 2,
+    "title": "top ",
+    "content": "The Ultimate Tech Quiz is very hard",
+    "user_id":2
+  },
+  {
+    "id": 3,
+    "title": "top ",
+    "content": "Roll 'Em Up hi there fore you ",
+    "user_id":3
+  }
+]
