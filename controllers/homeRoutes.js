@@ -2,23 +2,38 @@ const router = require("express").Router();
 
 const { User,  Blog, Comment } = require("../models");
 
-router.get("/", async (req, res) => {
-    const blogs = blogData = await Blog.findAll({
-      include: [User]
+// router.get("/", async (req, res) => {
+//     const blogs = blogData = await Blog.findAll({
+//       include: [User]
+//     });
+//     const blogDatas = blogs.map((blog) => blog.get({ plain: true }))
+//     blogDatas.reverse()
+//     if (req.session.user_id) {
+//     res.render("blogpost", {
+//       blogArr: blogDatas,  
+//       logged_in: req.session.user_id 
+//     })
+//     } else {
+//       res.render("blogpost", {
+//         blogArr: blogDatas,   
+//       })
+//     }
+//   });
+router.get('/', async (req, res) => {
+  try {
+    // Get all projects and JOIN with user data
+    const blogData = await Blog.findAll();
+    const blogs = blogData.map((blog) => blog.get({ plain: true }));
+
+    // Pass serialized data and session flag into template
+    res.render('homepage', { 
+      blogs, 
+      logged_in: req.session.logged_in 
     });
-    const blogDatas = blogs.map((blog) => blog.get({ plain: true }))
-    blogDatas.reverse()
-    if (req.session.user_id) {
-    res.render("blogpost", {
-      blogArr: blogDatas,  
-      logged_in: req.session.user_id 
-    })
-    } else {
-      res.render("blogpost", {
-        blogArr: blogDatas,   
-      })
-    }
-  });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 router.get("/blog", async (req, res) => {
   // if (req.session.logged_in) {
