@@ -63,23 +63,11 @@ router.get('/blog/:id', async (req, res) => {
   }
   try {
 
-    const blogData = await Blog.findByPk(req.params.id, {
-      include: [
-        {
-          model: User,
-          attributes: ['name'],
-        },
-        {
-          model: Comment,
-          attributes: ['text'],
-         
-        },
-      ]
-    })
+    const blogData = await Blog.findByPk(req.params.id,)
 
     const blog = blogData.get({ plain: true });
 
-    res.render('comment', {
+    res.render('viewblog', {
       ...blog,
       logged_in: req.session.logged_in
     });
@@ -89,55 +77,55 @@ router.get('/blog/:id', async (req, res) => {
 });
 
 
-router.get('/viewblog', async (req, res) => {
-  try {
+// router.get('/viewblog', async (req, res) => {
+//   try {
    
-    const commentData = await Comment.findAll({
-      include: [
-        {
-          model: Blog,
-          attributes: ['title'],
+//     const commentData = await Comment.findAll({
+//       include: [
+//         {
+//           model: Blog,
+//           attributes: ['title'],
       
-        },
-        {
-          model: User,
-          attributes: ['name'],
-        },
-      ],
-    });
+//         },
+//         {
+//           model: User,
+//           attributes: ['name'],
+//         },
+//       ],
+//     });
 
-    // Serialize data so the template can read it
-    const comments = commentData.map((comment) => comment.get({ plain: true }));
+//     // Serialize data so the template can read it
+//     const comments = commentData.map((comment) => comment.get({ plain: true }));
 
-    // Pass serialized data and session flag into template
-    res.render('viewblog', { 
-    comments, 
-      logged_in: req.session.logged_in 
-    });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
+//     // Pass serialized data and session flag into template
+//     res.render('viewblog', { 
+//     comments, 
+//       logged_in: req.session.logged_in 
+//     });
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
 
 // Use withAuth middleware to prevent access to route
-router.get('/comment', withAuth, async (req, res) => {
-  try {
-    // Find the logged in user based on the session ID
-    const userData = await User.findByPk(req.session.user_id, {
-      attributes: { exclude: ['password'] },
-      include: [{ model: Blog }],
-    });
+// router.get('/comment', withAuth, async (req, res) => {
+//   try {
+//     // Find the logged in user based on the session ID
+//     const userData = await User.findByPk(req.session.user_id, {
+//       attributes: { exclude: ['password'] },
+//       include: [{ model: Blog }],
+//     });
 
-    const user = userData.get({ plain: true });
+//     const user = userData.get({ plain: true });
 
-    res.render('comments', {
-      ...user,
-      logged_in: true
-    });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
+//     res.render('comment', {
+//       ...user,
+//       logged_in: true
+//     });
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
 
 router.get('/blogpost', withAuth, async (req, res) => {
     try {
@@ -161,15 +149,20 @@ router.get('/blogpost', withAuth, async (req, res) => {
   router.get('/viewblog', withAuth, async (req, res) => {
     try {
       // Find the logged in user based on the session ID
-      const userData = await User.findByPk(req.session.user_id, {
+      const blogData = await Blog.findByPk(req.session.user_id, {
         attributes: { exclude: ['password'] },
-        include: [{ model: Blog, Comment }],
+        include: [{ model: User,
+          attributes: ['name'], 
+        },{ model: comment,
+        attributes:['text', 'blog_id', 'user_id']}
+      
+      ],
       });
   
-      const user = userData.get({ plain: true });
+      const blog = blogData.get({ plain: true });
   
       res.render('viewblog', {
-        ...user,
+        ...blog,
         logged_in: true
       });
     } catch (err) {
