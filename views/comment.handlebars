@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="col-auto">
+    <h2>Welcome, {{blog.user.name}}!</h2>
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col-md-6">
+    <h3>Create a New Blog:</h3>
+
+    <p>{{blog.title}}</p>
+  </div>
+
+  {{#if comments.length}}
+  <div class="col-md-6 -list">
+    <h3>Current Comments:</h3>
+
+    {{#each comments as |comment|}}
+    <div class="row mb-2">
+      <div class="col-md-8">
+        <h4><a href="/blog/{{comment.id}}">{{comment.text}}</a></h4>
+      </div>
+      <div class="col-md-4">
+        <button class="btn btn-sm btn-danger" data-id="{{comment.id}}">DELETE</button>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+  {{/if}}
+</div>
+
+    <form class="form new-comment-form">
+      
+      <div class="form-group">
+        <label for="blog-text">{{blog.title}}</label>
+        <textarea class="form-input" id="comment-title" name="comment-title"></textarea>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Create</button>
+      </div>
+    </form>
+  </div>
+
+
+<script src="./js/comment.js"></script>

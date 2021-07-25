@@ -1,12 +1,12 @@
-const newBlogHandler = async (event) => {
+const newCommentHandler = async (event) => {
     event.preventDefault();
   
-    const title = document.querySelector('#blog-title').value.trim();
-    const text = document.querySelector('#blog-text').value.trim();
+
+    const text = document.querySelector('#comment-text').value.trim();
 
   
-    if (title && text ) {
-      const response = await fetch(`/api/blogs`, {
+    if ( text ) {
+      const response = await fetch(`/api/comments`, {
         method: 'POST',
         body: JSON.stringify({ title, text }),
         headers: {
@@ -15,7 +15,7 @@ const newBlogHandler = async (event) => {
       });
   
       if (response.ok) {
-        document.location.replace('/blog');
+        document.location.replace('/comment');
       } else {
         alert('Failed to create ');
       }
@@ -26,12 +26,12 @@ const newBlogHandler = async (event) => {
     if (event.target.hasAttribute('data-id')) {
       const id = event.target.getAttribute('data-id');
   
-      const response = await fetch(`/api/blogs/${id}`, {
+      const response = await fetch(`/api//${id}`, {
         method: 'DELETE',
       });
   
       if (response.ok) {
-        document.location.replace('/blog');
+        document.location.replace('/comment');
       } else {
         alert('Failed to delete ');
       }
@@ -40,7 +40,7 @@ const newBlogHandler = async (event) => {
   
   document
     .querySelector('.new--form')
-    .addEventListener('submit', newBlogHandler);
+    .addEventListener('submit', newCommentHandler);
   
   document
     .querySelector('.-list')
