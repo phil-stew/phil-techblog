@@ -15,7 +15,7 @@ const newCommentHandler = async (event) => {
       });
   
       if (response.ok) {
-        document.location.replace('/comment');
+        document.location.replace('/viewblog');
       } else {
         alert('Failed to create ');
       }
@@ -31,7 +31,7 @@ const newCommentHandler = async (event) => {
       });
   
       if (response.ok) {
-        document.location.replace('/comment');
+        document.location.replace('/viewblog');
       } else {
         alert('Failed to delete ');
       }
@@ -39,7 +39,7 @@ const newCommentHandler = async (event) => {
   };
   
   document
-    .querySelector('.new--form')
+    .querySelector('.new-comment-form')
     .addEventListener('submit', newCommentHandler);
   
   document
