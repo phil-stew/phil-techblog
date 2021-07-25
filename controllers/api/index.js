@@ -3,7 +3,7 @@ const userRoutes = require('./userRoutes');
 const projectRoutes = require('./projectRoutes');
 const comments = require('./commentRoutes')
 const blogs = require('./blogRoutes');
-const { router } = require('./userRoutes');
+
 
 
 
