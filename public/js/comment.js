@@ -6,7 +6,7 @@ const newCommentHandler = async (event) => {
 
   
     if ( text ) {
-      const response = await fetch(`/api/comments`, {
+      const response = await fetch(`/api/comment`, {
         method: 'POST',
         body: JSON.stringify({ title, text }),
         headers: {
@@ -22,11 +22,11 @@ const newCommentHandler = async (event) => {
     }
   };
   
-  const delButtonHandler = async (event) => {
+  const delHandler = async (event) => {
     if (event.target.hasAttribute('data-id')) {
       const id = event.target.getAttribute('data-id');
   
-      const response = await fetch(`/api//${id}`, {
+      const response = await fetch(`/api/comment/${id}`, {
         method: 'DELETE',
       });
   

@@ -6,7 +6,7 @@ const newBlogHandler = async (event) => {
 
   
     if (title && text ) {
-      const response = await fetch(`/api/blogs`, {
+      const response = await fetch(`/api/blog`, {
         method: 'POST',
         body: JSON.stringify({ title, text }),
         headers: {
@@ -15,7 +15,7 @@ const newBlogHandler = async (event) => {
       });
   
       if (response.ok) {
-        document.location.replace('/blog');
+        document.location.replace('/blogpost');
       } else {
         alert('Failed to create ');
       }
@@ -26,12 +26,12 @@ const newBlogHandler = async (event) => {
     if (event.target.hasAttribute('data-id')) {
       const id = event.target.getAttribute('data-id');
   
-      const response = await fetch(`/api/blogs/${id}`, {
+      const response = await fetch(`/api/blog/${id}`, {
         method: 'DELETE',
       });
   
       if (response.ok) {
-        document.location.replace('/blog');
+        document.location.replace('/blogpost');
       } else {
         alert('Failed to delete ');
       }
