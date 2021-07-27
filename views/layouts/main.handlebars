@@ -7,6 +7,7 @@
   <title>Tech blog</title>
   <link rel="stylesheet" href="/css/jass.css">
   <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/fix.css">
 </head>
 
 <body>
@@ -21,7 +22,7 @@
         {{#if logged_in}}
          <a href="/viewblog">View Blogs</a> |
         <a href="/blogpost">Write a Blog</a> |
-        <button class="no-button" id="logout">logout</button>
+        <button class="no-button log" id="logout">logout</button>
         {{else}}
         <a href="/login">login</a>
         {{/if}}
@@ -39,8 +40,8 @@
   <!-- Render script for logged in users only -->
   {{#if logged_in}}
   <script src="/js/logout.js"></script>
-  <script src="/js/blog.js"></script>
-  <script src="/js/comment.js"></script>
+
+
   {{/if}}
 </body>
 

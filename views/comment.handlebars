@@ -4,15 +4,18 @@
   </div>
 </div>
 
+{{#each blog as |blog|}}
 <div class="row mt-4">
   <div class="col-md-6">
-    <h3>Create a New Blog:</h3>
+    <h3>{{blog.title}}</h3>
 
-    <p>{{blog.title}}</p>
+    <p>why {{blog.text}}</p>
   </div>
+{{/each}}
+
 
   {{#if comments.length}}
-  <div class="col-md-6 -list">
+  <div class="col-md-6 com-list">
     <h3>Current Comments:</h3>
 
     {{#each comments as |comment|}}
@@ -33,7 +36,7 @@
       
       <div class="form-group">
         <label for="blog-text">{{blog.title}}</label>
-        <textarea class="form-input" id="comment-title" name="comment-title"></textarea>
+        <textarea class="form-input" id="comment-text" name="comment-text"></textarea>
       </div>
       <div class="form-group">
         <button type="submit" class="btn btn-primary">Create</button>
@@ -42,3 +45,4 @@
   </div>
 
 
+ <script src="/js/comment.js"></script>

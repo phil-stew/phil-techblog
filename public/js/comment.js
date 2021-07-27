@@ -8,7 +8,7 @@ const newCommentHandler = async (event) => {
     if ( text ) {
       const response = await fetch(`/api/comment`, {
         method: 'POST',
-        body: JSON.stringify({ title, text }),
+        body: JSON.stringify({ text }),
         headers: {
           'Content-Type': 'application/json',
         },
@@ -23,8 +23,8 @@ const newCommentHandler = async (event) => {
   };
   
   const delHandler = async (event) => {
-    if (event.target.hasAttribute('data-id')) {
-      const id = event.target.getAttribute('data-id');
+    if (event.target.hasAttribute('com-id')) {
+      const id = event.target.getAttribute('com-id');
   
       const response = await fetch(`/api/comment/${id}`, {
         method: 'DELETE',
@@ -42,7 +42,7 @@ const newCommentHandler = async (event) => {
     .querySelector('.new-comment-form')
     .addEventListener('submit', newCommentHandler);
   
-  document
-    .querySelector('.-list')
-    .addEventListener('click', delButtonHandler);
+  // document
+  //   .querySelector('.com-list')
+  //   .addEventListener('click', delHandler);
   

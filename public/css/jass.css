@@ -419,8 +419,9 @@ button {
   margin: 0;
 }
 
-a {
-  color: #1b89bc;
+a,
+.log {
+  color: #020005;
   text-decoration: none;
 }
 
