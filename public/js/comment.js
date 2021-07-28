@@ -42,7 +42,7 @@ const newCommentHandler = async (event) => {
     .querySelector('.new-comment-form')
     .addEventListener('submit', newCommentHandler);
   
-  // document
-  //   .querySelector('.com-list')
-  //   .addEventListener('click', delHandler);
+  document
+    .querySelector('.-list')
+    .addEventListener('click', delHandler);
   

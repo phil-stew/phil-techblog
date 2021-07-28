@@ -14,18 +14,6 @@ User.hasMany(Blog, {
   onDelete: 'CASCADE'
 });
 
-User.belongsToMany(Blog,
-  {
-    through: 'userblogs',
-    foreignKey: 'blog_id'
-  });
-
-  Comment.belongsToMany(Blog,
-    {
-      through: 'Commentblogs',
-      foreignKey: 'blog_id'
-    });
-
 
 
 User.hasMany(Comment, {
@@ -33,10 +21,7 @@ User.hasMany(Comment, {
   onDelete: 'CASCADE'
 });
 
-
-
 Comment.belongsTo(User, {
-
   foreignKey: 'user_id',
   onDelete: 'CASCADE'
 });
@@ -48,3 +33,7 @@ Comment.belongsTo(Blog, {
 
 
 module.exports = { User, Blog, Comment };
+
+
+
+
