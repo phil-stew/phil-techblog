@@ -1,24 +1,22 @@
 ## Phil-techblog
 
 ## Description
-
+A simple application for a user to login and and a blog, after that others can 
+comment on the blog post. user can also delete there post and comments.
+or atleast thats what i was trying to do.
 
 
 
 
 
 ## Installation
-to intall just use "NPM START"
-and open in the correct localhost 
-or you can open [here](https://budgettk.herokuapp.com/)
+you can clone the code from my github [here](https://github.com/phil-stew/phil-techblog). Then open in vs code use "npm i" then use mysql the create database then "npm run seed" followed but "npm start".  then open in the correct localhost. 
+
+the application was to be deployed in heroku i was able to get it to work there to many complications and asking for credit card info.
 
 ## Usage
 
-this app can keep track of your income and expeses 
-while keep a runing total simple name the transaction and the amount 
-then either and or subtract the funds
-the app work offline how ever i have unable to get the offline to 
-update upon refreshing 
+This application can be use to educate user about tech while being interactive with asking question or making statment though comments. 
 
 
 ## Contributing
