@@ -24,12 +24,15 @@ Pull requests are welcome, Phillip Stewat as made most of the changes required f
  
 ## Show App
 
-![deployed on localhost](./img/local.png)
-![deployed on localhost](./img/local2.png)
-![deployed on heroku](./img/heero.png)
-![deployed on heroku](./img/hero2.png)
+![deployed on  localhost](./img/home.png)  when page loads
+![deployed on localhost](./img/blogpage.png) view blogs
+![deployed on localhost](./img/comment.png) view comments
+![deployed on localhost](./img/comments.png) view comments
 
-showing app working on local host 
+
+i was not able to bring the blogs to there as it was suppose to be.
+
+
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
