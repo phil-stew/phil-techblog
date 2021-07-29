@@ -10,7 +10,13 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "keywords": [],
+  "keywords": [
+    "example",
+    "heroku"
+  ],
+  "engines": {
+    "node": "14.x"
+  },
   "author": "",
   "license": "ISC",
   "homepage": "https://github.com/phil-stew/phil-techblog",
